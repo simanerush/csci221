@@ -6,8 +6,10 @@
 void test_single() {
   HForest forest{};
   auto tree = std::make_shared<HTree>(9,8);
+  auto tree2 = std::make_shared<HTree>(100,80);
   forest.add_tree(tree);
-  assert(forest.pop_tree() == tree);
+  forest.add_tree(tree2);
+  assert(forest.pop_tree() == tree2);
 }
 
 void test_double(std::size_t count) {
