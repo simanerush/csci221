@@ -17,8 +17,18 @@ The ``` path_to ``` method uses recursion. If the passed ``` key ``` matches the
 
 ## test_htree.cc
 
-``` create_sample_tree ``` returns a unique pointer pointing to a sample tree. ``` test_create() ``` creates a tree and asserts that the properties are the same as they were defined. ``` test_path_to() ``` uses assertion methods to dereference a pointer to a path and assert that this path is a desired list of ``` Direction ``` objects. 
+``` create_sample_tree ``` returns a unique pointer pointing to a sample tree. ``` test_create() ``` creates a tree and asserts that the properties are the same as they were defined. ``` test_path_to() ``` uses assertion methods to dereference a pointer to a path and assert that this path is a desired list of ``` Direction ``` objects.
+
+## hforest.hh
+
+In ``` private ``` section, I've defined a ``` trees ``` vector of ``` HTree::tree_ptr_t ``` objects.
 
 ## hforest.cc
 
-In ``` private ``` section, I've defined a ``` trees ``` vector of ``` HTree::tree_ptr_t ``` objects.  
+``` compare_trees ``` returns the boolean value indicating if the second tree value is bigger than the first tree value.
+
+``` size() ``` method returns the ``` .size ``` property of ``` trees ``` vector.
+
+``` add_tree ``` method returns nothing and adds a ``` HTree ``` object to ``` trees ``` vector by using ``` push_back ``` method. After that, we push trees to the heap, passing in the previously written ``` compare_trees ``` method.
+
+``` pop_tree() ``` method returns a pointer to a removed ``` HTree ``` object with the highest value. First, it checks if ``` trees ``` vector is empty, and if it is, returns ``` nullptr ```. Then, it uses ` pop_heap ` method
