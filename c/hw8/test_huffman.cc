@@ -14,24 +14,26 @@ void test_encode()
   Huffman huff;
 
   auto bits = huff.encode('a');
-  assert(bits.size() > CHAR_BIT);
+  auto a_count = bits.size();
+
 
   bits = huff.encode('b');
-  assert(bits.size() > CHAR_BIT);
+  auto b_count = bits.size();
 
   bits = huff.encode('a');
-  assert(bits.size() < CHAR_BIT);
+  assert(bits.size() < a_count);
 
   bits = huff.encode('b');
-  assert(bits.size() < CHAR_BIT);
+  assert(bits.size() < b_count);
+  auto b_count_2 = bits.size();
 
   bits = huff.encode('b');
-  assert(bits.size() == huff.encode('a').size());
+  assert(bits.size() <= b_count_2);
 
   bits = huff.encode('b');
   bits = huff.encode('b');
   bits = huff.encode('b');
-  assert(bits.size() < huff.encode('a').size());
+  assert(bits.size() <= huff.encode('a').size());
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -74,4 +76,3 @@ int main()
   test_decode();
   return 0;
 }
-

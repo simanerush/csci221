@@ -51,11 +51,13 @@ HTree::possible_path_t HTree::path_to(key_t key) const
 }
 
 std::size_t HTree::child_count() const {
-  std::size_t count = 0
+  std::size_t count = 0;
   if (left_) {
+    count++;
     count += left_->child_count();
   }
   if (right_) {
+    count++;
     count += right_->child_count();
   }
   return count;

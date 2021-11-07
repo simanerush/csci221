@@ -35,11 +35,11 @@ HTree::tree_ptr_t Huffman::construct_tree() const {
   return forest.pop_tree();
 }
 
-static HTree::tree_ptr_t get_children(HTree::tree_ptr_t& parent, std::list<Direction>& path) {
-  auto current = parent
+static HTree::tree_ptr_t get_children(HTree::tree_ptr_t& parent, std::vector<HTree::Direction>& path) {
+  auto current = parent;
   for (const auto& x : path) {
     if (!current) {
-      return nullptr
+      return nullptr;
     } else {
       current = current->get_child(x);
     }
@@ -53,7 +53,11 @@ int Huffman::decode(bool bit) {
   auto child = get_children(symb, scratch_);
   if (!child) {
     return -1;
-  } else {
+  } else if (child->get_key() >= 0){
+    table_[child->get_key()]++;
+    scratch_.clear();
     return child->get_key();
+  } else {
+    return -1;
   }
 }
