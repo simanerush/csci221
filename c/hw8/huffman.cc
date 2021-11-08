@@ -2,7 +2,7 @@
 #include "huffman.hh"
 #include "hforest.hh"
 
-Huffman::Huffman() : table_(ALPHABET_SIZE, 0) {}
+Huffman::Huffman() : table_(ALPHABET_SIZE, 0), scratch_() {}
 
 Huffman::bits_t Huffman::encode(int symbol) {
   auto symb = this->construct_tree();
