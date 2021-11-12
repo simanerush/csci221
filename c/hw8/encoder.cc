@@ -10,12 +10,15 @@
 int main(int argc, char* argv[]) {
     assert(argc >= 2);
     auto file = argv[1];
+    // Create a file stream that reads from the file name taht's given
     std::fstream fs{file};
     // Results - bit string
     Huffman::bits_t value {};
     Huffman huffman{};
-    auto fileOut =std::string(file) + ".comp";
+    auto fileOut = std::string(file) + ".comp";
+    // Creates another stream for output which path is fileOut, we want it to be writable, clears the file when we open it
     std::fstream out{fileOut, std::fstream::out | std::fstream::trunc};
+    // Creating an instance of BitOutput
     BitOutput bitOut{out};
     while (true) {
         auto byte = fs.get();
@@ -28,7 +31,7 @@ int main(int argc, char* argv[]) {
             bitOut.output_bit(x);
         }
     }
-    // Write ever yencoded bit to the output
+    // Write eof in the ned
     for (const auto x : huffman.encode(Huffman::HEOF)) {
         bitOut.output_bit(x);
     }

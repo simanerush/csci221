@@ -20,6 +20,8 @@ class Huffman {
 
   Huffman();
   ~Huffman() = default;
+
+  // We need one Huffman, so we deleted the constructors
   Huffman(const Huffman&) = delete;
   Huffman(Huffman&&) = delete;
   Huffman& operator=(const Huffman&) = delete;
@@ -39,6 +41,7 @@ private:
   //Frequency table
   std::vector<size_t> table_;
   std::vector<HTree::Direction> scratch_;
+  HTree::tree_ptr_t scratch_tree_;
 
   HTree::tree_ptr_t construct_tree() const;
 };
