@@ -6,11 +6,11 @@
 #include "bitio.hh"
 #include "huffman.hh"
 
-// Get paramenters from command-line
+// Get parameters from command-line
 int main(int argc, char* argv[]) {
     assert(argc >= 2);
     auto file = argv[1];
-    // Create a file stream that reads from the file name taht's given
+    // Create a file stream that reads from the file name that's given
     std::fstream fs{file};
     // Results - bit string
     Huffman::bits_t value {};

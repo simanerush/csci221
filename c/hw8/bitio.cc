@@ -21,7 +21,7 @@ bool BitInput::input_bit() {
   return bool(bit);
 }
 
-BitOutput::BitOutput(std::ostream &os) : os_(&os), value_(0), index_(CHAR_BIT-1){}
+BitOutput::BitOutput(std::ostream &os) : os_(&os), value_(0), index_(CHAR_BIT-1) {}
 
 // Send any additional bits to the output string
 BitOutput::~BitOutput() {
