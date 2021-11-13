@@ -32,8 +32,12 @@ The `main` function of `Encoder.cc` and `Decoder.cc` are well-documented with co
 
 ### Compression tests
 
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+File Name | htree.cc | hforest.hh | test_bitio.cc | bitio.cc | huffman.cc 
+--- | --- | --- | --- |--- |--- 
+Raw Size in Bytes | 1,364 | 244 | 2,955 | 1,190 | 2,467 
+--- | --- | --- | --- |--- |--- 
+Compressed File Size in Bytes | 858 | 176 | 1,688 | 794 | 1,566
+--- | --- | --- | --- |--- |--- 
+Matches the raw file | yes | yes | yes | yes | yes 
 
 
