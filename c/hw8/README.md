@@ -3,7 +3,7 @@ Serafima Nerush, Patrick Norton
 
 ## Code Design
 
-# Huffman.hh and Huffman.cc
+### Huffman.hh and Huffman.cc
 
 In `huffman.hh` class private section, we declared the symbol frequency table, as well as `scratch_` and `scratch_tree_` variables for recording intermediate directions and tree. 
 
@@ -15,7 +15,7 @@ Helper function `get_children` returns a child for a given path by walking this 
 
 `decode` function creates a `scratch_tree_` if needed. We also add the direction to the given bit to `scratch_`. We also get a child for a given `scratch_` and `scratch_tree_`. If we cannot find it, we return -1. Else, we update the frequency table for the new found character, clear `scratch_` and `scratch_tree_`, and return the decoded value. 
 
-# Bitio.h and Bitio.cc
+### Bitio.h and Bitio.cc
 
 In both classes in `Bitio.hh` in private methods, we defined stream, value and index variables.
 
@@ -25,11 +25,15 @@ Destructor of output also puts any leftover values that are less than length of 
 
 `output_bit` turns every individual bit into a character. When index becomes less than 0, we are putting the value to the stream and clearing the intermediate value.
 
-# Encoder.cc and Decoder.cc
+### Encoder.cc and Decoder.cc
 
 The `main` function of `Encoder.cc` and `Decoder.cc` are well-documented with code comments in those files
 
 
+### Compression tests
 
+Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
 
 
