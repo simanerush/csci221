@@ -35,9 +35,7 @@ The `main` function of `Encoder.cc` and `Decoder.cc` are well-documented with co
 File Name | htree.cc | hforest.hh | test_bitio.cc | bitio.cc | huffman.cc 
 --- | --- | --- | --- |--- |--- 
 Raw Size in Bytes | 1,364 | 244 | 2,955 | 1,190 | 2,467 
---- | --- | --- | --- |--- |--- 
 Compressed File Size in Bytes | 858 | 176 | 1,688 | 794 | 1,566
---- | --- | --- | --- |--- |--- 
 Matches the raw file | yes | yes | yes | yes | yes 
 
 
