@@ -27,7 +27,7 @@ Destructor of output also puts any leftover values that are less than length of 
 
 # Encoder.cc and Decoder.cc
 
-The `main` function of `Encoder.cc` and `Decoder.cc` are well-documented with code comments in those files
+The `main` function of `Encoder.cc` and `Decoder.cc` are well-documented with code comments in those files🙂
 
 
 
