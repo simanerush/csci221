@@ -33,6 +33,7 @@ class Cities {
 
   void push_city(coord_t);
 
+  size_t size() const; 
   // To use coords
   friend std::ostream &operator << (std::ostream &stream, Cities &cities);
 

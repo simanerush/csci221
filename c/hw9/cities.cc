@@ -3,6 +3,8 @@
 #include <cmath>
 #include <numeric>
 #include <random>
+#include <sstream>
+#include <string>
 
 #include "cities.hh"
 
@@ -49,11 +51,12 @@ std::istream& operator >> (std::istream& stream, Cities& cities) {
 	std::string line;
 	// Parse through each line in the file
 	while (std::getline(stream, line)) {
-		auto tab_index = line.find("\t");
+		std::istringstream line_stream{line};
+		std::istream_iterator<int> values{line_stream};
 
 		// Get x and y from the line
-		auto x = std::stoi(line.substr(tab_index));
-		auto y = std::stoi(line.substr(tab_index + 1));
+		auto x = *(values++);
+		auto y = *(values++);
 
 		// Push city
 		Cities::coord_t coord(x,y);
@@ -73,10 +76,20 @@ std::ostream& operator << (std::ostream& stream, Cities& cities) {
 }
 
 Cities::permutation_t random_permutation(unsigned len) {
+	// Generate the new seed every time
+	static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	// To keep getting different random numbers
+	static std::default_random_engine engine{seed};
 	Cities::permutation_t result(len);
 	// Fill the result with increasing numbers
 	std::iota(result.begin(), result.end(), 0);
 	// Shuffle the vector
-	std::shuffle(result.begin(), result.end(), std::default_random_engine{});
+	std::shuffle(result.begin(), result.end(), engine);
+
+	return result;
+}
+
+size_t Cities::size() const {
+	return coords.size();
 }
 

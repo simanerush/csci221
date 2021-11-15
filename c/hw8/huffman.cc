@@ -78,3 +78,15 @@ int Huffman::decode(bool bit) {
     return -1;
   }
 }
+
+// Optimized Huffman encoding that uses a heap instead of a binary tree
+
+static bool compare_trees(HTree::tree_ptr_t t1, HTree::tree_ptr_t t2) {
+  if (t1->get_value() != t2->get_value()) {
+    return t1->get_value() > t2->get_value();
+  } else if (t1->child_count() != t2->child_count()) {
+    return t1->child_count() > t2->child_count();
+  } else {
+    return t1->get_key() > t2->get_key();
+  }
+}

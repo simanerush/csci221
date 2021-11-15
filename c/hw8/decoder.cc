@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
         auto huff = huffman.decode(bit);
         if (huff == Huffman::HEOF) {
             break;
-        // If huuf doesn't return a negative symbol, we push it to the decoded value.
+        // If huff doesn't return a negative symbol, we push it to the decoded value.
         } else if (huff >= 0) {
             value.push_back(huff);
         }
