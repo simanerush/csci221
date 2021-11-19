@@ -16,9 +16,9 @@ int main(int argc, char* argv[]) {
 		auto dist = cities.total_path_distance(permutation);
 		if (dist < distance) {
 			distance = dist;
+			std::cout << i << "\t" << distance << std::endl;
 		}
 	}
-	std::cout << distance << std::endl;
 
 	return 0;
 }

@@ -52,14 +52,8 @@ std::istream& operator >> (std::istream& stream, Cities& cities) {
 	// Parse through each line in the file
 	while (std::getline(stream, line)) {
 		std::istringstream line_stream{line};
-		std::istream_iterator<int> values{line_stream};
-
-		// Get x and y from the line
-		auto x = *(values++);
-		auto y = *(values++);
-
-		// Push city
-		Cities::coord_t coord(x,y);
+		Cities::coord_t coord;
+		line_stream >> coord.first >> coord.second;
 		cities.push_city(coord);
 	}
 
