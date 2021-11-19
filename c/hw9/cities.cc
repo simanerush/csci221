@@ -69,6 +69,20 @@ std::ostream& operator << (std::ostream& stream, Cities& cities) {
 	return stream;
 }
 
+// Use specified seed
+Cities::permutation_t random_permutation(unsigned len, unsigned seed) {
+	// To keep getting different random numbers
+	std::default_random_engine engine{seed};
+	Cities::permutation_t result(len);
+	// Fill the result with increasing numbers
+	std::iota(result.begin(), result.end(), 0);
+	// Shuffle the vector
+	std::shuffle(result.begin(), result.end(), engine);
+
+	return result;
+}
+
+// Generate new seed every time
 Cities::permutation_t random_permutation(unsigned len) {
 	// Generate the new seed every time
 	static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();

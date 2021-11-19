@@ -18,6 +18,9 @@ class Cities {
   // into the current city ordering in some container.
   using permutation_t = std::vector<unsigned int>;
 
+  // List of coords
+  using coord_list_t = std::vector<coord_t>;
+
   // Given a permutation, return a new Cities object where the order of the
   // cities reflects the original order of this class after reordering with
   // the given ordering. So for example, the ordering { 1, 0 } simply swaps
@@ -38,7 +41,7 @@ class Cities {
   friend std::ostream &operator << (std::ostream &stream, Cities &cities);
 
  private:
-    std::vector<coord_t> coords;
+    coord_list_t coords;
 };
 
 std::istream &operator >> (std::istream &stream, Cities &cities);
