@@ -1,1 +1,1 @@
-![Comparison](/comparison.gif)
+![Comparison](/c/hw10/comparison.gif)
