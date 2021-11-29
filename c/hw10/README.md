@@ -1,6 +1,6 @@
 # HW 10
 
-Partick Norton, Serafima Nerush
+Patrick Norton, Serafima Nerush
 
 ## The Comparison Graph
 
