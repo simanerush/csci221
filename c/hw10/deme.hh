@@ -38,6 +38,7 @@ class Deme {
 
   std::vector<Chromosome*> pop_;  // Population of Chromosomes
   double mut_rate_;  // Mutation rate (fraction in range [0,1])
+  std::vector<double> fitnesses_; // Buffer of fitnesses to avoid recalculation.
 
   std::default_random_engine generator_; // A random number generator for the various methods
 };
