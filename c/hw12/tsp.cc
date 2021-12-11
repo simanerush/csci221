@@ -109,12 +109,10 @@ granular_randomized_search(const Cities& cities,
     while (evaluated < niter) {
       auto my_best = randomized_search(cities, granularity);
       evaluated += granularity;
+      auto guard = std::scoped_lock(best_mutex);
+      // Repeat check, maybe something changed:
       if (cities.total_path_distance(my_best) < cities.total_path_distance(best_ordering)) {
-        auto guard = std::scoped_lock(best_mutex);
-        // Repeat check, maybe something changed:
-        if (cities.total_path_distance(my_best) < cities.total_path_distance(best_ordering)) {
-          best_ordering = my_best;
-        }
+        best_ordering = my_best;
       }
     }
   };
