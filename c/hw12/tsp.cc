@@ -26,11 +26,13 @@ bool
 is_improved(const Cities& cities,
             const Cities::permutation_t& ordering,
             double& best_dist,
-            uint64_t iter)
+            uint64_t iter, bool print = true)
 {
   const auto dist = cities.total_path_distance(ordering);
   if (dist < best_dist) {
-    std::cout << iter << "\t" << dist << std::endl;
+    if (print) {
+      std::cout << iter << "\t" << dist << std::endl;
+    }
     best_dist = dist;
     return true;
   }
@@ -215,7 +217,7 @@ threaded_ga_search(const Cities& cities,
       }
     }
     std::scoped_lock<std::mutex> lock(mutex);
-    if (is_improved(cities, local_best_ordering, best_dist, iters / nthread)) {
+    if (is_improved(cities, local_best_ordering, best_dist, iters / nthread, false)) {
       best_ordering = local_best_ordering;
     }
   };
