@@ -201,14 +201,24 @@ threaded_ga_search(const Cities& cities,
   std::mutex mutex{};
 
   auto run_one_thread =[&]() {
+    auto local_best_dist = std::numeric_limits<double>::max();
+    auto local_best_ordering = Cities::permutation_t(cities.size());
+  std::mutex mutex{};
     TournamentDeme deme(&cities, pop_size, mutation_rate);
     for (long i = 1; i<= iters / pop_size / nthread; i++) {
       deme.compute_next_generation();
 
       const auto ordering = deme.get_best()->get_ordering();
-      std::scoped_lock<std::mutex> lock(mutex);
-      if (is_improved(cities, ordering, best_dist, i * pop_size)) {
-        best_ordering = ordering;
+      
+      if (is_improved(cities, ordering, local_best_dist, i * pop_size)) {
+        local_best_ordering = ordering;
+        std::scoped_lock<std::mutex> lock(mutex);
+        if (is_improved(cities, ordering, best_dist, i * pop_size)) {
+          best_ordering = ordering;
+        } else {
+          local_best_ordering = best_ordering;
+          local_best_dist = best_dist;
+        }
       }
     }
   };
