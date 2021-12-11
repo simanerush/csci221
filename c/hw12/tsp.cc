@@ -212,7 +212,7 @@ threaded_ga_search(const Cities& cities,
 
       const auto ordering = deme.get_best()->get_ordering();
       
-      if (is_improved(cities, ordering, local_best_dist, i * pop_size), false) {
+      if (is_improved(cities, ordering, local_best_dist, i * pop_size, false)) {
         local_best_ordering = ordering;
       }
     }
