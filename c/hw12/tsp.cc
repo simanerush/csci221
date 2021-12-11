@@ -212,14 +212,11 @@ threaded_ga_search(const Cities& cities,
       
       if (is_improved(cities, ordering, local_best_dist, i * pop_size)) {
         local_best_ordering = ordering;
-        std::scoped_lock<std::mutex> lock(mutex);
-        if (is_improved(cities, ordering, best_dist, i * pop_size)) {
-          best_ordering = ordering;
-        } else {
-          local_best_ordering = best_ordering;
-          local_best_dist = best_dist;
-        }
       }
+    }
+    std::scoped_lock<std::mutex> lock(mutex);
+    if (is_improved(cities, local_best_ordering, best_dist, iters / nthread)) {
+      best_ordering = local_best_ordering;
     }
   };
 
