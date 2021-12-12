@@ -86,8 +86,8 @@ random_permutation(unsigned len)
   Cities::permutation_t ret(len);
   std::iota(ret.begin(), ret.end(), 0);
 
-  static std::random_device rd;  // Static so we don't initialize every time
-  static std::mt19937 g(rd());
+  static thread_local std::random_device rd;  // Static so we don't initialize every time
+  static thread_local std::mt19937 g(rd());
 
   std::shuffle(ret.begin(), ret.end(), g);
   return ret;
